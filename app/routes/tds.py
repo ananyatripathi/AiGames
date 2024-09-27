@@ -8,8 +8,16 @@ tds_bp = Blueprint('tds', __name__)
 
 tds_schema = schema.TDSSchema()
 
+@tds_bp.route('/', methods=['GET'])
+def health_check():
+    try:
+        return jsonify({"Message":"OK"}), 200
+    except Exception as e:
+        return jsonify({'error': str(e)}), 500
+
+
 @tds_bp.route('/answer', methods=['POST'])
-def add_lever():
+def ask_suggestion():
     try:
         tds_data = request.get_json()
         validated_tds_data = tds_schema.load(tds_data)
