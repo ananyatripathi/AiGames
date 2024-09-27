@@ -1,6 +1,6 @@
 from flask import Blueprint, request, jsonify
-import services.tds_service as tds_service
-import schemas as schema
+import app.services.tds_service as tds_service
+import app.schemas as schema
 from marshmallow import ValidationError
 from flask import Blueprint, request, jsonify
 
