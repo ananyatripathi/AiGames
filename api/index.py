@@ -7,7 +7,7 @@ app = Flask(__name__)
 allowed_origins = [
     "http://localhost:3000",
     "http://localhost:8000",
-    "https://pmmaturity.thouclabs.ai/backend"
+    "https://ai-games-frontend.vercel.app"
 ]
 
 CORS(app, resources={r"/*": {"origins": allowed_origins, "headers": "*", "methods": ["GET", "POST", "PUT", "DELETE", "OPTIONS", "PATCH"]}})
