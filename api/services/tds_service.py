@@ -1,4 +1,4 @@
-from schemas import GameResponse
+from app.schemas import GameResponse
 import google.generativeai as genai
 import json
 import re
