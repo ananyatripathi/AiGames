@@ -1,5 +1,5 @@
 from flask import Flask
-from routes.tds import tds_bp
+from app.routes.tds import tds_bp
 from flask_cors import CORS
 
 app = Flask(__name__)
