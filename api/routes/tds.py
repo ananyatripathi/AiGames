@@ -27,7 +27,7 @@ def ask_suggestion():
         playing_with = validated_tds_data['playing_with']
         user_prompt = validated_tds_data['user_prompt']
         prompt = tds_service.get_prompt(rounds=rounds, gender=gender, age_group=age_group, playing_with=playing_with, user_prompt=user_prompt)
-        answer = tds_service.get_tds_answer(prompt)
+        answer = tds_service.get_answer(prompt)
         return jsonify(answer), 200
     except Exception as e:
         return jsonify({'error': str(e)}), 500
@@ -43,7 +43,7 @@ def ask_suggestion_nhie():
         playing_with = validated_tds_data['playing_with']
         user_prompt = validated_tds_data['user_prompt']
         prompt = tds_service.get_prompt_nhie(rounds=rounds, gender=gender, age_group=age_group, playing_with=playing_with, user_prompt=user_prompt)
-        answer = tds_service.get_answer_nhie(prompt)
+        answer = tds_service.get_answer(prompt)
         return jsonify(answer), 200
     except Exception as e:
         return jsonify({'error': str(e)}), 500
