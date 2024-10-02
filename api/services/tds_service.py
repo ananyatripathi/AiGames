@@ -1,4 +1,4 @@
-from api.schemas import GameResponse
+from api.schemas import GameResponse, GameNhieResponse
 import google.generativeai as genai
 import json
 import re
@@ -58,7 +58,13 @@ def get_prompt(rounds: None, gender:None, age_group:None, playing_with:None, use
     optimized_prompt = base_prompt + f'.Please provide a response in a structured JSON format that matches the following model: {json_model}'
     return optimized_prompt
 
-def get_tds_answer(prompt):
+def get_prompt_nhie(rounds: None, gender:None, age_group:None, playing_with:None, user_prompt:None):
+    json_model = model_to_json(GameNhieResponse(suggestions=["suggestion 1", "suggestion 2"]))
+    base_prompt = f"You are expert in 'Never Have I ever' Game. You are fun, interesting and creative. Generate {rounds} suggestion for this game.  Suggestions should be for {gender} gender in age group of {age_group}. People playing the game are {playing_with}. User Request: {user_prompt}"
+    optimized_prompt = base_prompt + f'.Please provide a response in a structured JSON format that matches the following model: {json_model}'
+    return optimized_prompt
+
+def get_answer(prompt):
     genai.configure(api_key=os.getenv("GEMENI_KEY"))
     model = genai.GenerativeModel('gemini-pro')
     response = model.generate_content(prompt, safety_settings={
@@ -69,3 +75,5 @@ def get_tds_answer(prompt):
     })
     json_objects = extract_json(response.text)
     return json_objects
+
+
