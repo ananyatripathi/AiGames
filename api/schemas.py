@@ -12,3 +12,6 @@ class TDSSchema(Schema):
 class GameResponse(BaseModel):
     truth: List[str]
     dare: List[str]
+
+class GameNhieResponse(BaseModel):
+    suggestions: List[str]
